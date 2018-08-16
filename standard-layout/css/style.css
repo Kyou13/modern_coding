@@ -1,0 +1,336 @@
+@charset "UTF-8";
+
+/* ベース部分 */
+
+html{
+  font-size: 62.5%; /* 主要ブラウザのフォントサイズは16px, 10px程度に */
+}
+body{
+  color: #333;
+  font-size: 1.2rem; /* emは親要素に対する倍率, remはroot(html)に対する倍率 */
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; /* 半角含まれる場合'',""で囲む */
+}
+*, *::before, *::after{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問した、ホバー、押してから話すまで */
+  color: #d03c56;
+  text-decoration: none;
+}
+
+/* メイン部分 */
+.header{
+  width: 100%;
+  padding: 28px 0 10px;
+  background: url("../images/bg-header.gif") repeat-x;
+  -webkit-box-shadow: 0 0 10px 1px #e3e3e3; /* 右 下 ぼかし(大きいほど緩やかな変化) 拡張(影のおおきさ) 影色 */
+  -moz-box-shadow: 0 0 10px 1px #e3e3e3;
+  box-shadow: 0 0 10px 1px #e3e3e3;
+
+}
+.wrapper{
+  width: 970px;
+  margin: 30px auto 40px;
+}
+.main{
+  display: block;
+  float: left;
+  width: 660px;
+}
+.sidemenu{
+  float: right;
+  width: 275px;
+}
+.footer{
+  width: 100%;
+}
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.logo{
+  width: 225px;
+  height: 56px;
+  margin: 0 auto;
+  background: url('../images/logo.png') no-repeat;
+  overflow: hidden; /* はみ出し表示しない */
+  text-indent: 100%;
+  white-space: nowrap; /* テキスト折り返さない */
+}
+.logo a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.global-nav{
+  margin-top: 15px;
+  text-align: center; /* 文字に関するものは継承される 今回はulまで */
+}
+.global-nav .nav-item{
+  display: inline-block;
+  margin: 0 10px;
+}
+.global-nav .nav-item a{
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px; /* 上下余白と文字を含めた高さ */
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  color: #666;
+  font-size: 1.3rem;
+  letter-spacing: 1px; /* 文字と文字の感覚 */
+  -webkit-transition: 0.15s;
+  -moz-transition: 0.15s;
+  -ms-transition: 0.15s;
+  -o-transition: 0.15s;
+  transition: 0.15s; /* スタイル変化のタイミング */
+}
+.global-nav .nav-item.acrive a,
+.global-nav .nav-item a:hover{
+  background-color: #d03c56;
+  color: #fff;
+}
+.hot-topic{
+  display: block;
+  height: 300px;
+  margin-bottom: 30px;
+  -webkit-box-shadow: 0 6px 4px -4px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 6px 4px -4px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 4px -4px rgba(0,0,0,0.15);
+}
+.hot-topic:hover{
+  opacity: 0.85;
+}
+.hot-topic .image{
+  float:left;
+  width: 50%;
+  height: 100%;
+}
+.hot-topic .content{
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 105px 25px 0;
+  background-color: #2d3d54;
+  line-height: 1.6;
+}
+.hot-topic .title{
+  margin-bottom: 15px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 2.0rem;
+}
+.hot-topic .desc{
+  color: #ddc;
+}
+.hot-topic .date{
+  position: absolute; /* 親要素に対する絶対位置 */
+  top: 60px;
+  left: 0;
+  width: 140px;
+  padding: 4px;
+  background-color: #fff;
+  color: #2d3d54;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  line-height: 1; /* font-sizeに対する倍率 */
+}
+.heading{
+  padding: 10px 12px;
+  background-color: url('../images/bg-slash.gif');
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+.scroll-list{
+  max-height: 220px;
+  overflow-y: auto; /* 子要素はみでたらスクロールできる 値:visible,hidden,scroll,auto*/
+  margin-bottom: 30px;
+  list-style-type: none;
+}
+.scroll-list .scroll-item a{
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  font-size: 0; /* inlineやinline-blockの要素間に改行あると半角スペースが挿入されるのを防ぐ */
+  transition: background-color 0.1s;
+}
+.scroll-list .scroll-item:nth-of-type(even) a{ /* nth-of-type:要素ごと nth-child: 要素関係なく */
+  background: url('../images/bg-slash.gif'); /* background-repeatはdefaultで繰り返し表示 aに指定することでcolorを変えれる */
+}
+.scroll-list .scroll-item a:hover{
+  background-color: #fafaf8;
+}
+.scroll-list .date{
+  display: inline-block;
+  width: 19%; /* bar表示されたとき崩れるのを防ぐ */
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.0rem;
+}
+.scroll-list .category{
+  display: inline-block;
+  width: 8%; /* bar表示されたとき崩れるのを防ぐ */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #d03c56;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.0rem;
+  line-height: 16px; /* 行の高さ */
+}
+.scroll-list .category.news{
+  background-color: #2c3c53;
+}
+.scroll-list .title{
+  display: inline-block;
+  width: 73%; /* bar表示されたとき崩れるのを防ぐ */
+  padding-left: 15px;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis; /* clip: 表示領域を境目にして非表示, ellipsis:非表示になるテキストの手前で省略記号表示 */
+  white-space: nowrap; /* 折返し禁止 */
+  /* 上3つはセットで覚える */
+  font-size: 1.0rem;
+}
+.article-box{
+  position: relative;
+  display: block;
+  width: 315px; /* (660-30) /2 */
+  height: 360px;
+  margin-bottom: 30px;
+  padding: 210px 15px 0;
+  -webkit-box-shadow: 6px 6px 8px -4px rgba(0,0,0,0.15);
+  -moz-box-shadow: 6px 6px 8px -4px rgba(0,0,0,0.15);
+  box-shadow: 6px 6px 8px -4px rgba(0,0,0,0.15);
+}
+/* 以下2つの指定で記事を左右に表示可能 */
+.article-box:nth-of-type(odd){
+  float: left;
+}
+.article-box:nth-of-type(even){
+  float: right;
+}
+.article-box:hover{
+  opacity: 0.8;
+}
+.article-box .title{
+  margin-top: 30px;
+  color: #555;
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+.article-box .desc{
+  margin-top: 5px;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.article-box .date{
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+  display: block;
+  width: 160px;
+  padding: 4px;
+  background-color: #b5d264;
+  color: #2d3d54;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.article-box .image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.ranking{
+  margin-bottom: 30px;
+  list-style-type: none;
+  counter-reset: ranking; /* カウンタの値リセット */
+}
+.ranking .ranking-item{
+  margin-top: 15px;
+}
+.ranking .ranking-item a{
+  display: block;
+  font-size: 0;
+  -webkit-transition: opacity 0.15s;
+  -moz-transition: opacity 0.15s;
+  -ms-transition: opacity 0.15s;
+  -o-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+}
+.ranking .ranking-item a:hover{
+  opacity: 0.8;
+}
+.ranking .image{
+  width: 55px;
+  height: 55px;
+}
+.ranking .text{
+  display: inline-block;
+  width: 182px;
+  color: #000;
+  vertical-align: top;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.ranking .order{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  color: #aaa;
+  vertical-align: 20px; /* インライン要素のみ */
+  text-align: center;
+  font-weight: bold;
+  line-height: 16px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.ranking .ranking-item:nth-of-type(1) .order,
+.ranking .ranking-item:nth-of-type(2) .order,
+.ranking .ranking-item:nth-of-type(3) .order{
+  border: none;
+  color: #fff;
+  font-weight: normal;
+  line-height: 18px;
+}
+.ranking .ranking-item:nth-of-type(1) .order{
+  background-color: #dab413;
+}
+.ranking .ranking-item:nth-of-type(2) .order{
+  background-color: #6e7b84;
+}
+.ranking .ranking-item:nth-of-type(3) .order{
+  background-color: #a0541a;
+}
+.ranking .order::before{
+  content: counter(ranking); /* カウンタの値表示 */
+  counter-increment: ranking; /* カウンタの値を増加 */
+  display: inline-block;
+  font-size: 1.0rem;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
