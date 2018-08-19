@@ -267,6 +267,7 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
 }
 .ranking .ranking-item{
   margin-top: 15px;
+  position: relative;
 }
 .ranking .ranking-item a{
   display: block;
@@ -292,6 +293,7 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
   font-size: 1.2rem;
   line-height: 1.5;
 }
+/*
 .ranking .order{
   display: inline-block;
   width: 18px;
@@ -299,7 +301,7 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
   margin: 0 10px;
   border: 1px solid #ccc;
   color: #aaa;
-  vertical-align: 20px; /* インライン要素のみ */
+  vertical-align: 20px; /* インライン要素のみ
   text-align: center;
   font-weight: bold;
   line-height: 16px;
@@ -308,6 +310,23 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
   -ms-transform: rotate(45deg);
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+*/
+.ranking .order{
+  position: absolute;
+  display: inline-block;
+  top: -9px;
+  left: 44px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  color: #aaa;
+  text-align: center;
+  font-weight: bold;
+  line-height: 16px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
 }
 .ranking .ranking-item:nth-of-type(1) .order,
 .ranking .ranking-item:nth-of-type(2) .order,
@@ -326,9 +345,10 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
 .ranking .ranking-item:nth-of-type(3) .order{
   background-color: #a0541a;
 }
+/*
 .ranking .order::before{
-  content: counter(ranking); /* カウンタの値表示 */
-  counter-increment: ranking; /* カウンタの値を増加 */
+  content: counter(ranking); /* カウンタの値表示 
+  counter-increment: ranking; /* カウンタの値を増加 
   display: inline-block;
   font-size: 1.0rem;
   -webkit-transform: rotate(-45deg);
@@ -336,6 +356,12 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
   -ms-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+*/
+.ranking .order::before{
+  content: counter(ranking); /* カウンタの値表示 */
+  counter-increment: ranking; /* カウンタの値を増加 */
+  font-size: 1.0rem;
 }
 .documents{
   margin: 10px 10px 30px;
@@ -427,4 +453,10 @@ a:link, a:visited, a:hover, a:active{ /* まだ訪問されていない、訪問
   margin-top: 30px;
   text-align: center;
   letter-spacing: 1px;
+}
+.ranking .image{
+  margin-right: 20px;
+}
+.ranking .text{
+  width: 200px;
 }
