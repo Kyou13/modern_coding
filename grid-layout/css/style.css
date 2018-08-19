@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+html{
+  font-size: 62.5%;
+}
+body{
+  padding: 30px;
+  background-color: #f6f7fb;
+  color: #333;
+  font-size: 1.2rem;
+  font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+*, *::before, *::after{ /* before afterは別で指定しないとダメ */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a:link, a:visited, a:hover, a:active{
+  color: #7C5119;
+  text-decoration: none;
+}
+.item{
+  width: 180px;
+  margin-bottom: 4px;
+  padding: 8px;
+  border-bottom: 3px solid; /* 色はカテゴリーごとにしてするためここでは未設定(透明) */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.item .image{
+  display: block;
+  width: 100%; /* 画像のサイズによらず、item内に収める */
+  height: 109px; /* 画像読み込みよりMasonryの実行が先立った場合に表示が崩れてしまうため */
+}
+.item .category{
+  margin: 15px 9px 10px;
+  color: #aaa;
+  letter-spacing: 1px;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+.item .category::before{ /* カテゴリータイトル前の○ */
+  content: '';
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-right: 5px;
+  border: 2px solid;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: -5px;
+}
+.item .description{
+  margin: 10px;
+  line-height: 1.5;
+}
+.item > a{
+  display: block;
+  margin: -8px -8px -11px; /* 11はpaddingとborder足した値 */
+  padding: 8px 8px 11px;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  border-radius: inherit;
+  color: #777;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.item > a:hover{
+  box-shadow: 0 0 6px -1px rgba(0,0,0,0.3);
+  opacity: 0.8;
+}
+.item-maindish,
+.item-maindish .category::before{
+  border-color: #FFC0CB;
+}
+.item-appetizer,
+.item-appetizer .category::before{
+  border-color: #76C047;
+}
+.item-column,
+.item-column .category::before{
+  border-color: #FFF100;
+}
+.item-breaktime,
+.item-breaktime .category::before{
+  border-color: #C1EFFF;
+}
+.item-m{
+  width: 364px;
+}
+.item-m .image{
+  height: 146px;
+}
+.item-l{
+  width: 762px;
+}
+.item-l .image{
+  height: 403px;
+}
+.header{
+  padding: 25px 0;
+  border-bottom: none;
+  text-align: center;
+}
+.logo{
+  width: 136px;
+  height: 136px;
+  transition: transform 0.3s;
+}
+.logo:hover{
+  transform: rotate(360deg);
+}
+.nav{
+  margin: 35px auto 10px;
+}
+.nav-item{
+  margin-top: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.nav-item a{
+  display: inline-block;
+  /* 下線をテキスト幅と同じにする&%で指定できるように */
+}
+.nav-item a::after{
+  content: '';
+  display: block;
+  width: 0;
+  margin: 6px auto 0;
+  border-bottom: 1px solid #7C5119;
+  transition: width 0.3s ease-in-out;
+}
+.nav-item a:hover::after{
+  width: 100%;
+}
+.item{
+  overflow: hidden;
+}
+.item > a::before{
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  left: 8px;
+  display: block;
+  height: 109px;
+  background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+.item > a:hover::before{
+  opacity: 1;
+}
+.item-m > a::before{
+  height: 146px;
+}
+.item-l > a::before{
+  height: 403px;
+}
+.item > a::after{
+  content: 'MORE';
+  position: absolute;
+  top: 43.5px;
+  left: 150%;
+  display: block;
+  width: 100px;
+  margin-left: -50px; /* width/2 */
+  padding: 8px;
+  border: 3px solid #fff;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 1.6rem;
+  font-family: "Trebuchet MS", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+.item-m > a::after{
+  top: 62px;
+}
+.item-l > a::after{
+  top: 190.5px;
+}
+.item > a:hover::after{
+  left: 50%;
+  opacity: 1;
+}
